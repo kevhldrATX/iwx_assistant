@@ -3,7 +3,7 @@ import yaml
 from gradio_client import Client
 import openai
 
-mode = "general"
+mode = "combo"
 
 st.set_page_config(page_title="Infoworks AI", page_icon="🔥", layout="wide")
 
@@ -12,7 +12,7 @@ openai.api_key = st.secrets["openai_API_KEY"]
 
 
 if mode != "general":
-    client = Client("https://7d2c93f2c53aadc850.gradio.live/")
+    client = Client("https://d6ed0b9b4edfc00343.gradio.live/")
 
 
 def complete(prompt, option):
