@@ -3,19 +3,20 @@ import yaml
 from gradio_client import Client
 import openai
 
+mode = "general"
+
 st.set_page_config(page_title="Infoworks AI", page_icon="🔥", layout="wide")
 
-# Load config file
-with open('./config/config.yaml', 'r') as file:
-    config_data = yaml.safe_load(file)
-
 # Initialize openAI
-openai.api_key = config_data['openai']['openai_API_KEY']
+openai.api_key = st.secrets["openai_API_KEY"]
 
-client = Client("https://7d2c93f2c53aadc850.gradio.live/")
+
+if mode != "general":
+    client = Client("https://7d2c93f2c53aadc850.gradio.live/")
+
 
 def complete(prompt, option):
-    if option != 'General':
+    if option != 'General' and mode != 'general':
         try:
             res = client.predict(
                         option,	# str (Option from: ['API', 'Docs', 'Code']) in 'Choose question Type' Dropdown component
