@@ -1,0 +1,10 @@
+# config.yaml
+pinecone:
+    pinecone_API_KEY: 1694ef0d-ba0c-4063-8261-a3606055b174
+    pinecone_ENV: us-west1-gcp-free
+openai:
+    openai_API_KEY: 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
+google:
+    youtube_API_KEY: AIzaSyBx9wyEDl6xF5H55YXmr0iPs2kc63iyldA
+cohere:
+    cohere_API_KEY: lr5glnLj56OaLyDKH3CplODYs2xmmJOYveRtfcnU
