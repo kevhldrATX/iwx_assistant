@@ -12,7 +12,7 @@ openai.api_key = st.secrets["openai_API_KEY"]
 
 
 if mode != "general":
-    client = Client("https://9a47796e90f4afb687.gradio.live/")
+    client = Client(st.secrets["gradio_link"])
 
 
 def complete(prompt, option):
@@ -25,6 +25,9 @@ def complete(prompt, option):
 
         if option == 'Code':
             action = 'Code'
+
+        if option == 'Command':
+            action = 'API'
 
         try:
             res = client.predict(
