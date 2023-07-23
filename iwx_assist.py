@@ -12,7 +12,7 @@ openai.api_key = st.secrets["openai_API_KEY"]
 
 
 if mode != "general":
-    client = Client("https://d6ed0b9b4edfc00343.gradio.live/")
+    client = Client("https://81ea8e92a3e80c886f.gradio.live/")
 
 
 def complete(prompt, option):
