@@ -36,10 +36,6 @@ def complete(prompt, option):
 
     return res
 
-# Load config file
-with open('./config/config.yaml', 'r') as file:
-    config_data = yaml.safe_load(file)
-
 
 st.image('https://www.infoworks.io/wp-content/uploads/2022/09/logo-orig.svg')
 
