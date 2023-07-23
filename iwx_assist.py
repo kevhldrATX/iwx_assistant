@@ -17,29 +17,41 @@ if mode != "general":
 
 def complete(prompt, option):
     if option != 'General' and mode != 'general':
+        if option == 'API Help':
+            action = 'API HELP'
+
+        if option == 'Product Help':
+            action = 'Docs'
+
+        if option == 'Code':
+            action = 'Code'
+
         try:
             res = client.predict(
-                        option,	# str (Option from: ['API', 'Docs', 'Code']) in 'Choose question Type' Dropdown component
+                        action,	# str (Option from: ['API', 'Docs', 'Code']) in 'Choose question Type' Dropdown component
                         prompt,	# str in 'User Question' Textbox component
                         api_name="/predict"
                 )
         except:
             res = "I do not have an answer to that request."
     else:
-        res = openai.ChatCompletion.create(
-            model="gpt-4",
-             messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": prompt},
-            ]
-        )['choices'][0]['message']['content']
+        try:
+            res = openai.ChatCompletion.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "system", "content": "You are a helpful assistant."},
+                    {"role": "user", "content": prompt},
+                ])['choices'][0]['message']['content']
+        except:
+            res = "I do not have an answer to that request."
+        
 
     return res
 
 
 st.image('https://www.infoworks.io/wp-content/uploads/2022/09/logo-orig.svg')
 
-option = st.radio('', ('Code', 'API HELP', 'Docs', 'General'), horizontal=True)
+option = st.radio('', ('Code', 'API Help', 'Product Help', 'General'), horizontal=True)
 
 st.write("#### Infoworks Assistant")
 
