@@ -51,7 +51,6 @@ def complete(prompt, option):
 
     return res
 
-
 st.image('https://www.infoworks.io/wp-content/uploads/2022/09/logo-orig.svg')
 
 option = st.radio('', ('Code', 'API Help', 'Product Help', 'General'), horizontal=True)
@@ -73,7 +72,13 @@ for chat in st.session_state['chat_history']:
         else:
             st.write(chat[1])
 
-if search_criteria := st.chat_input():
+chat_container = st.container()
+
+search_criteria = chat_container.chat_input()
+
+# if search_criteria := st.chat_input():
+
+if search_criteria:
     
     st.chat_message("user").write(search_criteria)
 
